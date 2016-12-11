@@ -1,0 +1,11 @@
+node_modules
+hooks
+platforms
+.idea
+.temp
+.sass-cache
+app
+resources
+plugins
+www/bower_components
+www/lib
