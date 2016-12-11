@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $rootScope) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -42,42 +42,38 @@ angular.module('starter.controllers', [])
 
   $scope.googleLogin = function () {
     // Log the user in via Google
-    var provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider).catch(function(error) {
-      console.log("Error authenticating user:", error);
-    });
-  };
-})
-
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
-
-
-  firebase.auth().onAuthStateChanged(function(user) {
-    // Once authenticated, instantiate Firechat with the logged in user
-    if (user) {
-      initChat(user);
+    if(!ionic.Platform.isAndroid()){
+      var provider = new firebase.auth.GoogleAuthProvider();
+      firebase.auth().signInWithPopup(provider).then(function (data) {
+        $rootScope.userStatus=true;
+        $scope.closeLogin();
+      },function(error) {
+        console.log("Error authenticating user:", error);
+      });
+    } else {
+      console.log("Only webview is supported");
     }
-  });
-
-  function initChat(user) {
-    // Get a Firebase Database ref
-    var chatRef = firebase.database().ref("chat");
-
-    // Create a Firechat instance
-    var chat = new FirechatUI(chatRef, document.getElementById("firechat-wrapper"));
-
-    // Set the Firechat user
-    chat.setUser(user.uid, user.displayName);
   }
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
-});
+.controller('chatCtrl', function($scope, $rootScope) {
+
+    firebase.auth().onAuthStateChanged(function(user) {
+      // Once authenticated, instantiate Firechat with the logged in user
+      if (user) {
+        $rootScope.userStatus=true;
+        initChat(user);
+      }
+    });
+
+    function initChat(user) {
+      // Get a Firebase Database ref
+      var chatRef = firebase.database().ref("chat");
+
+      // Create a Firechat instance
+      var chat = new FirechatUI(chatRef, document.getElementById("firechat-wrapper"));
+
+      // Set the Firechat user
+      chat.setUser(user.uid, user.displayName);
+    }
+  });

@@ -9,7 +9,7 @@
     <form ng-submit="doLogin()">
       <div class="list">
         <label class="item item-input">
-          <span class="input-label">Username</span>
+          <span class="input-label">E-mail</span>
           <input type="text" ng-model="loginData.username">
         </label>
         <label class="item item-input">
@@ -17,10 +17,18 @@
           <input type="password" ng-model="loginData.password">
         </label>
         <label class="item">
-          <button class="button button-block button-positive" type="submit">Log in</button>
+          <button class="button button-block button-calm" type="submit">Login using Email</button>
         </label>
       </div>
     </form>
-    <button ng-click="googleLogin()">Login with Google</button>
+
+    <div class="row" align="center">
+      <div class="col">
+        <button class="button button-small button-balanced" ng-click="googleLogin()">Login with Google</button>
+      </div>
+      <div class="col">
+        <button class="button button-small button-positive" ng-click="fbLogin()">Login with Facebook</button>
+      </div>
+    </div>
   </ion-content>
 </ion-modal-view>
