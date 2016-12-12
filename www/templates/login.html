@@ -2,32 +2,38 @@
   <ion-header-bar>
     <h1 class="title">Login</h1>
     <div class="buttons">
-      <button class="button button-clear" ng-click="closeLogin()">Close</button>
+      <button class="button button-small" ng-click="closeLogin()">Close</button>
     </div>
   </ion-header-bar>
   <ion-content>
-    <form ng-submit="doLogin()">
-      <div class="list">
-        <label class="item item-input">
-          <span class="input-label">E-mail</span>
-          <input type="text" ng-model="loginData.username">
-        </label>
-        <label class="item item-input">
-          <span class="input-label">Password</span>
-          <input type="password" ng-model="loginData.password">
-        </label>
-        <label class="item">
-          <button class="button button-block button-calm" type="submit">Login using Email</button>
-        </label>
-      </div>
-    </form>
+    <!--<form ng-submit="doLogin()">-->
+      <!--<div class="list">-->
+        <!--<label class="item item-input">-->
+          <!--<span class="input-label">E-mail</span>-->
+          <!--<input type="text" ng-model="loginData.username">-->
+        <!--</label>-->
+        <!--<label class="item item-input">-->
+          <!--<span class="input-label">Password</span>-->
+          <!--<input type="password" ng-model="loginData.password">-->
+        <!--</label>-->
+        <!--<label class="item">-->
+          <!--<button class="button button-block button-calm" type="submit">Login using Email</button>-->
+        <!--</label>-->
+      <!--</div>-->
+    <!--</form>-->
 
     <div class="row" align="center">
       <div class="col">
-        <button class="button button-small button-balanced" ng-click="googleLogin()">Login with Google</button>
+        <button class="button button-block button-assertive button-shadow icon-left" ng-click="googleLogin()">
+          <i class="icon ion-social-google padding-right-30"></i>
+          Login with Google
+        </button>
       </div>
       <div class="col">
-        <button class="button button-small button-positive" ng-click="fbLogin()">Login with Facebook</button>
+        <button class="button button-block button-positive button-shadow icon-left" ng-click="fbLogin()">
+          <i class="icon ion-social-facebook padding-right-30"></i>
+          Login with Facebook
+        </button>
       </div>
     </div>
     <div class="row row-no-padding">
@@ -37,16 +43,16 @@
     </div>
     <div class="row">
       <div class="col">
-        <button class="button button-block button-google button-shadow icon-left"
+        <button class="button button-block button-balanced button-shadow icon-left"
                 ng-click="emailSignIn()" >
           <i class="icon ion-email padding-right-30"></i>
           Login with Email
         </button>
       </div>
     </div>
-    <div class="row">
+    <div class="row" align="center">
       <div class="col" ng-click="createAccount()">
-        Don't have an account!
+        Don't have an account! Create one now.
       </div>
     </div>
   </ion-content>

@@ -18,11 +18,17 @@
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item menu-close ng-click="login()">
+        <ion-item nav-clear menu-close class="item-icon-left" ng-click="login()">
+          <i class="icon ion-log-in"></i>
           Login
         </ion-item>
-        <ion-item menu-close href="#/app/chat">
+        <ion-item nav-clear menu-close class="item-icon-left" href="#/app/chat">
+          <i class="icon ion-android-chat"></i>
           Chat
+        </ion-item>
+        <ion-item nav-clear menu-close class="item-icon-left" ng-click="closeApp()">
+          <i class="icon ion-android-close"></i>
+          Exit & Close
         </ion-item>
       </ion-list>
     </ion-content>

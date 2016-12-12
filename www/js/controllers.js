@@ -9,6 +9,11 @@ angular.module('starter.controllers', [])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
+  $scope.closeApp=function() {
+    ionic.Platform.exitApp();
+    console.log("app closed");
+  };
+
   // Form data for the login modal
   $scope.loginData = {};
 
@@ -61,7 +66,7 @@ angular.module('starter.controllers', [])
         console.log("Error authenticating user:", error);
       });
     } else {
-      console.log("Only webview is supported");
+      console.log("Currently only webview is supported, check back later");
     }
   };
 
@@ -475,20 +480,14 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('chatCtrl', function($scope, $rootScope, userService) {
+.controller('chatCtrl', function() {
 
-  // if(!ionic.Platform.isAndroid()){
     firebase.auth().onAuthStateChanged(function(user) {
       // Once authenticated, instantiate Firechat with the logged in user
       if (user) {
-        $rootScope.userStatus=true;
         initChat(user);
       }
     });
-  // } else {
-  //   console.log(userService);
-    // initChat(userService);
-  // }
 
     function initChat(user) {
       // Get a Firebase Database ref
