@@ -30,5 +30,24 @@
         <button class="button button-small button-positive" ng-click="fbLogin()">Login with Facebook</button>
       </div>
     </div>
+    <div class="row row-no-padding">
+      <div class="col">
+        <p class="text-center gray margin-0">OR</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button class="button button-block button-google button-shadow icon-left"
+                ng-click="emailSignIn()" >
+          <i class="icon ion-email padding-right-30"></i>
+          Login with Email
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col" ng-click="createAccount()">
+        Don't have an account!
+      </div>
+    </div>
   </ion-content>
 </ion-modal-view>
